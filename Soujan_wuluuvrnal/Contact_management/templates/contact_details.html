@@ -1,0 +1,56 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'base_style.css' %}">
+
+</head>
+
+<body>
+    <div class="body">
+        <div class="sub-header">Contact Details</div>	
+        <br>
+        <table class="table table-borderless">
+            <colgroup>
+                <col span="1" style="width: 15%;">
+                <col span="1" style="width: 70%;">
+             </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="col">Name: </th>
+                    <td>{{contact_record.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Email: </th>
+                    <td>{{contact_record.email}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Notes: </th>
+                    <td>{{contact_record.notes}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Created Time: </th>
+                    <td>{{contact_record.time}}</td>
+                </tr>
+    
+            </tbody>
+        </table>
+
+        <a href="{% url 'update_contact' contact_record.id %}"><button type="button" class="color-button" >Edit</button></a>
+        <a href="{% url 'delete_contact' contact_record.id %}"><button type="button" class="delete-button" >Delete</button></a>
+        <a href="{% url 'home' %}"><button type="button" class="cancel-button" >Cancel</button></a>
+</body>
+
+</html>
+{% endblock %}
